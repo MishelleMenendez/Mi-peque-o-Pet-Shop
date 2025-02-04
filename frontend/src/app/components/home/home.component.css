@@ -1,0 +1,125 @@
+.container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #97dcf1;
+}
+
+.header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fffdfd;
+    font-weight: bold;
+}
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.info-section {
+    width: 40%;
+}
+
+.info-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.info-section button:hover {
+    background-color: #0056b3;
+}
+
+.image-section {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-section img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.footer {
+    background-color: #e9ecef;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+.logout-btn {
+    background-color: #97dcf1; 
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn:hover {
+    background-color: #97dcf1; 
+    transform: scale(1.05); 
+}
+
+.logout-btn:active {
+    background-color: #c2e5f0;
+    transform: scale(0.95);
+}
+.nav-title {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.nav-title:hover {
+    color: #d9d9d9; 
+}
+
+strong{
+    color:#ffffff;
+}
+/* Estilos generales para computadoras */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Ajuste para dispositivos móviles (pantallas menores a 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Texto más pequeño */
+        margin: 10px;
+    }
+
+    table {
+        width: 100%;
+        display: block;
+        overflow-x: auto; /* Permite desplazamiento horizontal en móviles */
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 12px;
+    }
+}

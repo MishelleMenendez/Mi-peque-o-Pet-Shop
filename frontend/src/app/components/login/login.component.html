@@ -1,0 +1,32 @@
+<div class="container">
+  <header class="header">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div><strong>Pet Shop</strong></div>
+    <nav>
+        <a routerLink="/home" class="nav-link">Home</a>
+        <a routerLink="/contacto" class="nav-link">Contacto</a>
+        <a routerLink="/registro" class="nav-link">Registro</a>
+    </nav>
+  </header>
+
+  <div class="auth-container">
+      <h2>Iniciar Sesión</h2>
+      <form (ngSubmit)="onLogin()">
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="email" name="email" required>
+    
+        <label>Contraseña:</label>
+        <input type="password" [(ngModel)]="password" name="password" required>
+    
+        <button type="submit"class="logout-btn">Ingresar</button>
+      </form>
+      
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+      <p>No tienes cuenta? <a routerLink="/registro">Regístrate aquí</a></p>
+  </div>
+
+  <footer class="footer">
+    &copy; 2025 Pet Shop - Todos los derechos reservados.
+  </footer>
+</div>

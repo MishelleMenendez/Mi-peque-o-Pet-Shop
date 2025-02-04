@@ -1,0 +1,58 @@
+<div class="container">
+    <header class="header">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div><strong>Pet Shop</strong></div>
+        <nav>
+            <a routerLink="/home" class="nav-link">Home</a>
+            <a routerLink="/gestion_pedidos" class="nav-link">Gestión Pedidos</a>
+            <a routerLink="/admin" class="nav-link">Gestión Usuarios</a>
+            <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="product-management">
+        <h2 class="text-center">Control de Inventarios</h2>
+        
+        <form (ngSubmit)="agregarProducto()" class="text-center">
+            <label for="nombre">Nombre del Producto:</label>
+            <input id="nombre" type="text" placeholder="Producto" [(ngModel)]="producto.nombre" name="nombre" required>
+
+            <label for="descripcion">Descripción:</label>
+            <input id="descripcion" type="text" placeholder="Descripción" [(ngModel)]="producto.descripcion" name="descripcion" required>
+
+            <label for="precio">Precio:</label>
+            <input id="precio" type="number" placeholder="Precio" [(ngModel)]="producto.precio" name="precio" required>
+
+            <label for="unidades">Unidades Disponibles:</label>
+            <input id="unidades" type="number" placeholder="Unidades" [(ngModel)]="producto.unidades" name="unidades" required>
+
+            <button type="submit" class="logout-btn">Añadir Producto</button>
+        </form>
+
+        <h3 class="text-center">Lista de Productos</h3>
+        <div class="table-container">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Unidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos">
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td style="color: green;">${{ producto.precio }}</td>
+                        <td style="color: blue;">{{ producto.unidades }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="footer">
+        &copy; 2025 Pet Shop - Todos los derechos reservados.
+    </footer>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+    <header class="header">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div class="title"><strong>Pet Shop</strong></div>
+        <nav>
+            <a routerLink="/home" class="nav-link">Home</a>
+            <a routerLink="/productos" class="nav-link">Productos</a>
+            <a routerLink="/contacto" class="nav-link">Contacto</a>
+            <a routerLink="/pedidos" class="nav-link">Pedidos</a>
+            <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="profile-container">
+        <h1>Perfil</h1>
+        <h2>Bienvenido, {{ usuario.nombre }}</h2>
+        <h3>Tus Pedidos</h3>
+    
+        <ul *ngIf="pedidos.length > 0; else noPedidos">
+            <li *ngFor="let pedido of pedidos" class="pedido-item">
+                <h5>Pedido</h5>
+                <p><span class="label">Estado:</span> {{ pedido.estado }}</p>
+                <p><span class="label">Total:</span> ${{ pedido.total }}</p>
+                <ul class="productos-list">
+                    <li *ngFor="let producto of pedido.productos">
+                        <span class="producto-nombre">{{ producto.nombre }}</span> - Precio: ${{ producto.precio }}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    
+        <ng-template #noPedidos>
+            <p>No tienes pedidos aún.</p>
+        </ng-template>
+    </section>
+
+    <footer class="footer">
+        <span>&copy; 2025 Pet Shop - Todos los derechos reservados.</span>
+        <span class="cart-icon">&#128722;</span>
+    </footer>
+</div>

@@ -1,0 +1,71 @@
+<div class="container"> 
+    <header class="header">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div><strong>Pet Shop - Admin</strong></div>
+        <nav>
+            <a routerLink="/home" class="nav-link">Inicio</a>
+            <a routerLink="/gestion_productos" class="nav-link">Gestión Productos</a>
+            <a routerLink="/gestion_pedidos" class="nav-link">Gestión Pedidos</a>
+            <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="orders-management">
+        <h2>Gestión de pedidos a domicilio</h2>
+        <div class="table-container">
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Productos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidos">
+                        <td>{{ pedido._id }}</td>
+                        <td>${{ pedido.total }}</td>
+                        <td>{{ pedido.estado }}</td>
+                        <td>
+                            <ul *ngIf="pedido.productos.length > 0; else noProductos">
+                                <li *ngFor="let producto of pedido.productos">
+                                    {{ producto.nombre }} - ${{ producto.precio }}
+                                </li>
+                            </ul>
+                            <ng-template #noProductos>
+                                <p>No hay productos en este pedido.</p>
+                            </ng-template>
+                        </td>
+                        <td>
+                            <button (click)="actualizarEstado(pedido._id, 'Aceptado')" class="logout-btn">Aceptar</button>
+                            <button (click)="actualizarEstado(pedido._id, 'Rechazado')" class="logout-btn">Rechazar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="card-title text-center">Gestión de ventas </h2>
+            <ngx-charts-bar-vertical
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="chartData"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-vertical>
+            <p>Este gráfico muestra el total de los pedidos aceptados.</p>
+        </div>
+    </section>
+    <footer class="footer">
+        &copy; 2025 Pet Shop - Todos los derechos reservados.
+    </footer>
+</div>

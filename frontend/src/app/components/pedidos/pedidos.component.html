@@ -1,0 +1,52 @@
+<div class="container">
+    <header class="header">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div><strong>Pet Shop</strong></div>
+        <nav>
+            <a routerLink="/home" class="nav-link">Home</a>
+            <a routerLink="/pedidos" class="nav-link">Pedidos</a>
+            <button (click)="cerrarSesion()" class="logout-btn">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="pedido-form">
+        <h2>Realizar Pedido</h2>
+
+        <form #pedidoForm="ngForm" (ngSubmit)="realizarPedido()">
+            <label for="nombre">Producto:</label>
+            <input id="nombre" type="text" [value]="producto.nombre" readonly>
+
+            <label for="descripcion">Descripción:</label>
+            <input id="descripcion" type="text" [value]="producto.descripcion" readonly>
+
+            <label for="precio">Precio Unitario:</label>
+            <input id="precio" type="number" [value]="producto.precio" readonly>
+
+            <label for="cantidad">Cantidad:</label>
+            <input id="cantidad" type="number" [(ngModel)]="cantidad" name="cantidad" min="1" required #cantidadField="ngModel">
+            <div *ngIf="cantidadField.invalid && cantidadField.touched" class="error">Debe ingresar al menos 1 unidad.</div>
+
+            <label for="direccion">Dirección:</label>
+            <input id="direccion" type="text" [(ngModel)]="direccion" name="direccion" required pattern="^[A-Za-z0-9\s,.#-]{5,}$" #direccionField="ngModel">
+            <div *ngIf="direccionField.invalid && direccionField.touched" class="error">Ingrese una dirección válida (ejemplo: Calle 123, Quito).</div>
+
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" type="text" [(ngModel)]="telefono" name="telefono" pattern="^[0-9]{10}$" required #telefonoField="ngModel">
+            <div *ngIf="telefonoField.invalid && telefonoField.touched" class="error">Ingrese un número de teléfono válido (10 dígitos).</div>
+
+            <label for="referencia">Referencia:</label>
+            <input id="referencia" type="text" [(ngModel)]="referencia" name="referencia">
+
+            <label for="total">Total:</label>
+            <input id="total" type="number" [value]="cantidad * producto.precio" readonly>
+            
+            <button type="submit" [disabled]="pedidoForm.invalid" class="logout-btn">Confirmar Pedido</button>
+        </form>
+
+        <p *ngIf="mensaje" class="mensaje" [ngClass]="mensajeClase">{{ mensaje }}</p>
+    </section>
+
+    <footer class="footer">
+        &copy; 2025 Pet Shop - Todos los derechos reservados.
+    </footer>
+</div>
